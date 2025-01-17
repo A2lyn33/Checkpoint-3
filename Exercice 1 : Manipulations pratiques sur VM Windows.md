@@ -8,9 +8,6 @@
 
 ### Q.1.1.1 _Créer l'utilisateur Lionel Lemarchand avec les même attribut de société que Kelly Rhameur._
 ![Capture d’écran 2025-01-17 095213](https://github.com/user-attachments/assets/f00b244c-95ce-430d-9b66-4cd0b10b2609)
-![Capture d’écran 2025-01-17 094932](https://github.com/user-attachments/assets/a4325333-7061-4b42-8107-ad2ba4f22e27)
-![Capture d’écran 2025-01-17 100917](https://github.com/user-attachments/assets/12b2d106-a46f-4bf8-a124-d86ca99c201a)
-![Capture d’écran 2025-01-17 100928](https://github.com/user-attachments/assets/edb91611-6c39-4956-80b2-c1ed64ffabfb)
 ![Capture d’écran 2025-01-17 100951](https://github.com/user-attachments/assets/71e29e07-2365-40b6-9b8f-11b2fddd73c4)
 
 ### Q.1.1.2 _Créer une OU DeactivatedUsers et déplace le compte désactivé de Kelly Rhameur dedans._
@@ -28,7 +25,10 @@
 ## Partie 2 : Restriction utilisateurs
 
 ### Q.1.2.1 _Faire en sorte que l'utilisateur Gabriel Ghul ne puisse se connecter que du lundi au vendredi, de 7h à 17h._
+![Capture d’écran 2025-01-17 110659](https://github.com/user-attachments/assets/4b76a1f2-c0e7-4982-9252-625e3dcb373c)
 
 ### Q.1.2.2 _De même, bloquer sa connexion au seul ordinateur CLIENT01._
+![Capture d’écran 2025-01-17 110914](https://github.com/user-attachments/assets/2501a5d8-5efd-4e5a-8225-c7ae5dd52720)
 
 ### Q.1.2.3 _Mettre en place une stratégie de mot de passe pour durcir les comptes des utilisateurs de l'OU LabUsers._
+![Capture d’écran 2025-01-17 112252](https://github.com/user-attachments/assets/031d1494-dbdf-40a1-bf03-da922eaf1d01)
