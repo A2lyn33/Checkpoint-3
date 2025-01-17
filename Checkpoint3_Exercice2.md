@@ -14,7 +14,7 @@ _***Compte Adlyne**_
     ```sudo```
   - Connexion SSH par clé et non par MDP.
 ---
-## Partie 2 : Configuration de SSH
+# Partie 2 : Configuration de SSH
 
 >Un serveur SSH est lancé sur le port par défaut.
 >Il est possible de s'y connecter avec n'importe quel compte, y compris le compte root.
@@ -32,7 +32,7 @@ _***Compte Adlyne**_
 ![Capture d’écran 2025-01-17 125523](https://github.com/user-attachments/assets/86c5a73c-f0a7-47dc-9ae7-b0c2db19e0b4)
 
 ---
-## Partie 3 : Analyse du stockage
+# Partie 3 : Analyse du stockage
 ---
 ### Q.2.3.1 Quels sont les systèmes de fichiers actuellement montés ?
 Il y a :
@@ -58,7 +58,7 @@ Il y a :
 ### Q.2.3.5 Combien d'espace disponible reste-t-il dans le groupe de volume ?
 
 ---
-## Partie 4 : Sauvegardes
+# Partie 4 : Sauvegardes
 ---
 >Le logiciel bareos est installé sur le serveur.
 >Les composants bareos-dir, bareos-sd et bareos-fd sont installés avec une configuration par défaut.
@@ -70,6 +70,9 @@ Il y a :
   - bareos-fd (File Daemon) : Installe sur les machines à sauvegarder pour transmettre les données au bareos-sd.
 
 ---
+
+😢😢😢
+```
 ## Partie 5 : Filtrage et analyse réseau
 ---
 ### Q.2.5.1 Quelles sont actuellement les règles appliquées sur Netfilter ?
