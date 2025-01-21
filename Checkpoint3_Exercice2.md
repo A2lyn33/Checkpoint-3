@@ -101,3 +101,18 @@ puis dans `/etc/fstab/` ajouter la ligne
 `/dev/cp3-vg/LVMBackup /var/lib/bareos/storage ext4 defaults`
 - Q.2.3.5 Espace disponible dans le groupe de volume	KO	Réponse en tapant la commande
 `vgs`
+---
+📊 Q.2.5.2
+ct state established, related accept : les retours de connexions déjà établies.
+
+iifname "lo" accept autorise le trafic local.
+
+TCP dport 22 accept autorise les connexions TCP destinées au port 22 (port SSH).
+
+IP protocol icmp accept autorise les pings IPV4.
+
+IP6 nexthdr icmpv6 accept autorise les pings IPV6.
+
+📊 Q.2.5.3
+ct state invalid drop : les paquets ne pouvant pas être identifiés à une requêtes.
+Et tout le reste qui n'est pas en accept.
