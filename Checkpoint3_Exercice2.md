@@ -90,3 +90,16 @@ Il y a :
 
 La date et l'heure de la tentative
 L'adresse IP de la machine ayant fait la tentative
+```
+Réponse à corriger :
+fdisk /dev/sdb
+. Réparer le RAID
+mdadm --add /dev/md0 /dev/sdb1
+- Q.2.3.4 Ajouter un volume LVM pour les sauvegardes	KO	
+lvcreate --name LVMBackup --size 2G cp3-vg
+mkfs.ext4 /dev/cp3-vg/LVMBackup
+mount /dev/cp3-vg/LVMBackup /var/lib/bareos/storage/
+puis dans /etc/fstab/ ajouter la ligne
+/dev/cp3-vg/LVMBackup /var/lib/bareos/storage ext4 defaults
+- Q.2.3.5 Espace disponible dans le groupe de volume	KO	Réponse en tapant la commande
+vgs
