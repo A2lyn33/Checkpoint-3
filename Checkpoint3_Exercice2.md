@@ -4,7 +4,7 @@
 ---
 ## Partie 1 : Gestion des utilisateurs<br>
 ---
-### Q.2.1.1 Sur le serveur, créer un compte pour ton usage personnel.
+### Q.2.1.1 Sur le serveur, créer un compte pour ton usage personnel. PENSER A METTRE LES COMMANDES !!!
 ![Capture d’écran 2025-01-17 120234](https://github.com/user-attachments/assets/7969838a-68a6-4bde-97c5-2d47147277c6)  
 _***Compte Adlyne**_
 
@@ -36,11 +36,8 @@ _***Compte Adlyne**_
 ---
 ### Q.2.3.1 Quels sont les systèmes de fichiers actuellement montés ?
 Il y a :
-  - tmpfs
-  - udev
-  - /dev/mapper/cp3--vg-root
-  - /dev/md0p1
-
+  - ext2
+  - ext4
 ### Q.2.3.2 Quel type de système de stockage ils utilisent ?
 Il y a :
   - rom
@@ -92,14 +89,15 @@ La date et l'heure de la tentative
 L'adresse IP de la machine ayant fait la tentative
 ```
 Réponse à corriger :
-fdisk /dev/sdb
+Q.2.3.3 Ajouter un disque et réparer le RAID	KO	Création d'une partition sur le disque de 8 Go
+`fdisk /dev/sdb`
 . Réparer le RAID
-mdadm --add /dev/md0 /dev/sdb1
+`mdadm --add /dev/md0 /dev/sdb1`
 - Q.2.3.4 Ajouter un volume LVM pour les sauvegardes	KO	
-lvcreate --name LVMBackup --size 2G cp3-vg
-mkfs.ext4 /dev/cp3-vg/LVMBackup
-mount /dev/cp3-vg/LVMBackup /var/lib/bareos/storage/
-puis dans /etc/fstab/ ajouter la ligne
-/dev/cp3-vg/LVMBackup /var/lib/bareos/storage ext4 defaults
+`lvcreate --name LVMBackup --size 2G cp3-vg`
+`mkfs.ext4 /dev/cp3-vg/LVMBackup`
+`mount /dev/cp3-vg/LVMBackup /var/lib/bareos/storage/`
+puis dans `/etc/fstab/` ajouter la ligne
+`/dev/cp3-vg/LVMBackup /var/lib/bareos/storage ext4 defaults`
 - Q.2.3.5 Espace disponible dans le groupe de volume	KO	Réponse en tapant la commande
-vgs
+`vgs`
