@@ -9,9 +9,12 @@
 ### Q.1.1.1 _Créer l'utilisateur Lionel Lemarchand avec les même attribut de société que Kelly Rhameur._
 ![Capture d’écran 2025-01-17 095213](https://github.com/user-attachments/assets/f00b244c-95ce-430d-9b66-4cd0b10b2609)
 ![Capture d’écran 2025-01-17 100951](https://github.com/user-attachments/assets/71e29e07-2365-40b6-9b8f-11b2fddd73c4)
+![Capture d’écran 2025-01-27 113314](https://github.com/user-attachments/assets/15cb8ea8-edbb-4de0-b18d-71bfaa58e6d6)
+
 
 ### Q.1.1.2 _Créer une OU DeactivatedUsers et déplace le compte désactivé de Kelly Rhameur dedans._
 ![Capture d’écran 2025-01-17 102827](https://github.com/user-attachments/assets/74d823a9-8612-49be-b688-345b67eced85)
+![Capture d’écran 2025-01-27 113502](https://github.com/user-attachments/assets/67d5bcd8-4643-4a6a-bcf6-ae3e714786af)
 ![Capture d’écran 2025-01-17 102840](https://github.com/user-attachments/assets/0b95d3e0-5b70-4624-9a51-13ec51a20b9e)
 ![Capture d’écran 2025-01-17 102917](https://github.com/user-attachments/assets/167c2f19-15bc-43d3-90db-249fecb5fa3c)
 
