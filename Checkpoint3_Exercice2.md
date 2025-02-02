@@ -4,9 +4,10 @@
 ---
 ## Partie 1 : Gestion des utilisateurs<br>
 ---
-### Q.2.1.1 Sur le serveur, créer un compte pour ton usage personnel. PENSER A METTRE LES COMMANDES !!!
+### Q.2.1.1 Sur le serveur, créer un compte pour ton usage personnel.
+  - Utilisation de la commande `adduser`
+  - Création du _**Compte Adlyne**_ <br> 
 ![Capture d’écran 2025-01-17 120234](https://github.com/user-attachments/assets/7969838a-68a6-4bde-97c5-2d47147277c6)  
-_***Compte Adlyne**_
 
 ### Q.2.1.2 Quelles préconisations proposes-tu concernant ce compte ?
   - Utiliser un mot de passe fort.
@@ -39,18 +40,27 @@ Il y a :
   - ext2
   - ext4
 ### Q.2.3.2 Quel type de système de stockage ils utilisent ?
-Il y a :
-  - rom
+Il y a : <br> 
   - lvm
-  - part
-  - disk
   - raid1
 
 ### Q.2.3.3 Ajouter un nouveau disque de 8,00 Gio au serveur et réparer le volume RAID
+  - Rajout du Disque sur la VM : <br>
 ![Capture d’écran 2025-01-17 131655](https://github.com/user-attachments/assets/418a5cc0-5cd4-45be-a703-3a4d6eed06ab)
 ![Capture d’écran 2025-01-17 131716](https://github.com/user-attachments/assets/b0fd9b7e-803d-4787-9f43-cd6b2502eef7)
+  - Création de la partition du disque SDB :
+      - Utilisation de la commande : `fdisk /dev/sdb`
+![Capture d’écran 2025-02-02 162633](https://github.com/user-attachments/assets/4d8d2192-3976-4b62-8134-7d4be0fa564f)
+  - Réparer le RAID <br> 
+      - Utilisation de la commande : `mdadm --add /dev/md0 /dev/sdb1`<br>
+![Capture d’écran 2025-02-02 164427](https://github.com/user-attachments/assets/1d45b94c-7363-4a5b-b9c5-6707350e00ed)
+
+
+
 
 ### Q.2.3.4 Ajouter un nouveau volume logique LVM de 2 Gio qui servira à héberger des sauvegardes. Ce volume doit être monté automatiquement à chaque démarrage dans l'emplacement par défaut : /var/lib/bareos/storage.
+
+
 
 ### Q.2.3.5 Combien d'espace disponible reste-t-il dans le groupe de volume ?
 
