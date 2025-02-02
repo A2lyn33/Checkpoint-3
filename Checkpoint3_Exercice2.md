@@ -109,10 +109,11 @@ Il y a : <br>
 ## Partie 6 : Analyse de logs
 ---
 ### Q.2.6.1 Lister les 10 derniers échecs de connexion ayant eu lieu sur le serveur en indiquant pour chacun :
-> Aucun échec <br>
-![Capture d’écran 2025-02-02 172850](https://github.com/user-attachments/assets/6a90f535-6c02-4ab5-b825-346d90a32b8f)
-> Après test pour créer des erreurs<br>
-![Capture d’écran 2025-02-02 173333](https://github.com/user-attachments/assets/8d887e6e-86a0-4756-8622-5b6c7081dbd4)
-
+  - utilisation de la commande `journalctl -t sshd | grep 'Failed'| tail`
+![Capture d’écran 2025-02-02 173804](https://github.com/user-attachments/assets/e123979d-4268-43ea-ae07-5d4977b0652d)
 La date et l'heure de la tentative
 L'adresse IP de la machine ayant fait la tentative
+---
+---
+---
+Enjoy Your Day Reda 
