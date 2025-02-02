@@ -15,7 +15,7 @@
     ```sudo```
   - Connexion SSH par clé et non par MDP.
 ---
-# Partie 2 : Configuration de SSH
+## Partie 2 : Configuration de SSH
 
 >Un serveur SSH est lancé sur le port par défaut.
 >Il est possible de s'y connecter avec n'importe quel compte, y compris le compte root.
@@ -33,7 +33,7 @@
 ![Capture d’écran 2025-01-17 125523](https://github.com/user-attachments/assets/86c5a73c-f0a7-47dc-9ae7-b0c2db19e0b4)
 
 ---
-# Partie 3 : Analyse du stockage
+## Partie 3 : Analyse du stockage
 ---
 ### Q.2.3.1 Quels sont les systèmes de fichiers actuellement montés ?
 Il y a :
@@ -55,14 +55,18 @@ Il y a : <br>
       - Utilisation de la commande : `mdadm --add /dev/md0 /dev/sdb1`<br>
 ![Capture d’écran 2025-02-02 164427](https://github.com/user-attachments/assets/1d45b94c-7363-4a5b-b9c5-6707350e00ed)
 
-
-
-
-### Q.2.3.4 Ajouter un nouveau volume logique LVM de 2 Gio qui servira à héberger des sauvegardes. Ce volume doit être monté automatiquement à chaque démarrage dans l'emplacement par défaut : /var/lib/bareos/storage.
-
-
+### Q.2.3.4 Ajouter un nouveau volume logique LVM de 2 Gio qui servira à héberger des sauvegardes.<br>
+> **Ce volume doit être monté automatiquement à chaque démarrage dans l'emplacement par défaut : /var/lib/bareos/storage.**
+  - Voir les VGs disponible avec la commande : vgdisplay, puis créer un LV sur le groupe disponible via la commande : `lvcreate -L 2G -n Saves cp3-vg` <br>
+![Capture d’écran 2025-02-02 165030](https://github.com/user-attachments/assets/abaad711-9f2e-4cce-9a9f-55854c1a79b9)
+![Capture d’écran 2025-02-02 165315](https://github.com/user-attachments/assets/1c6e438a-ca2a-4b03-a18b-c5b5e840cad7)
+  - On monte le LV via cette commande : `mount /dev/cp3-vg/Saves /var/lib/bareos/storage/`<br> 
+![Capture d’écran 2025-02-02 165441](https://github.com/user-attachments/assets/6eafa39e-d5d9-45e5-8131-b81698cee4b6)
+  - On configure le fichier `nano /etc/fstab`
+![Capture d’écran 2025-02-02 165601](https://github.com/user-attachments/assets/d7576d12-dc18-43f5-91e0-caec16a0e025)
 
 ### Q.2.3.5 Combien d'espace disponible reste-t-il dans le groupe de volume ?
+![Capture d’écran 2025-02-02 165711](https://github.com/user-attachments/assets/c82847e7-c9a3-4adc-bcbc-f27457da4a5f)
 
 ---
 # Partie 4 : Sauvegardes
@@ -78,51 +82,35 @@ Il y a : <br>
 
 ---
 
-😢😢😢
-```
-## Partie 5 : Filtrage et analyse réseau
+# Partie 5 : Filtrage et analyse réseau
 ---
 ### Q.2.5.1 Quelles sont actuellement les règles appliquées sur Netfilter ?
+![Capture d’écran 2025-02-02 171239](https://github.com/user-attachments/assets/e4ffb3ad-b162-4859-8484-88fe93e7ed1c)
 
-### Q.2.5.2 Quels types de communications sont autorisées ?
+### Q.2.5.2 Quels types de communications sont autorisées ?<br> 
+  - `ct state established, related accept` : les retours de connexions déjà établies.
+
+  - `iifname "lo" accept` autorise le trafic local.
+
+  - `TCP dport 22 accept` autorise les connexions TCP destinées au port 22 (port SSH).
+
+  - `IP protocol icmp accept` autorise les pings IPV4.
+
+  - `IP6 nexthdr icmpv6 accept` autorise les pings IPV6.
 
 ### Q.2.5.3 Quels types sont interdit ?
+  - `ct state invalid drop` : les paquets ne pouvant pas être identifiés à une requêtes.<br>
+> Et tout le reste qui n'est pas en accept.<br>
 
 ### Q.2.5.4 Sur nftables, ajouter les règles nécessaires pour autoriser bareos à communiquer avec les clients bareos potentiellement présents sur l'ensemble des machines du réseau local sur lequel se trouve le serveur.
-
+  - Utilisation de la commande : `nft add rule inet inet_filter_table in_chain tcp dport { 9101-9103 } ct state new accept`
+![Capture d’écran 2025-02-02 172146](https://github.com/user-attachments/assets/9f62de05-5802-4f37-95ab-ea2de30fd41e)
 ---
-
 ## Partie 6 : Analyse de logs
+---
 ### Q.2.6.1 Lister les 10 derniers échecs de connexion ayant eu lieu sur le serveur en indiquant pour chacun :
+> Aucun échec 
+![Capture d’écran 2025-02-02 172850](https://github.com/user-attachments/assets/6a90f535-6c02-4ab5-b825-346d90a32b8f)
 
 La date et l'heure de la tentative
 L'adresse IP de la machine ayant fait la tentative
-```
-Réponse à corriger :
-Q.2.3.3 Ajouter un disque et réparer le RAID	KO	Création d'une partition sur le disque de 8 Go
-`fdisk /dev/sdb`
-. Réparer le RAID
-`mdadm --add /dev/md0 /dev/sdb1`
-- Q.2.3.4 Ajouter un volume LVM pour les sauvegardes	KO	
-`lvcreate --name LVMBackup --size 2G cp3-vg`
-`mkfs.ext4 /dev/cp3-vg/LVMBackup`
-`mount /dev/cp3-vg/LVMBackup /var/lib/bareos/storage/`
-puis dans `/etc/fstab/` ajouter la ligne
-`/dev/cp3-vg/LVMBackup /var/lib/bareos/storage ext4 defaults`
-- Q.2.3.5 Espace disponible dans le groupe de volume	KO	Réponse en tapant la commande
-`vgs`
----
-📊 Q.2.5.2
-ct state established, related accept : les retours de connexions déjà établies.
-
-iifname "lo" accept autorise le trafic local.
-
-TCP dport 22 accept autorise les connexions TCP destinées au port 22 (port SSH).
-
-IP protocol icmp accept autorise les pings IPV4.
-
-IP6 nexthdr icmpv6 accept autorise les pings IPV6.
-
-📊 Q.2.5.3
-ct state invalid drop : les paquets ne pouvant pas être identifiés à une requêtes.
-Et tout le reste qui n'est pas en accept.
